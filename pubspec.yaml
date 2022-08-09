@@ -1,7 +1,8 @@
 name: iap_interface
-description: A new Flutter project.
+description: in-app-purchase for flutter.
 version: 0.0.1
-homepage:
+homepage: https://github.com/AndesGroup-TNG/iap_interface
+repository: https://github.com/AndesGroup-TNG/iap_interface
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
