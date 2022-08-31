@@ -16,8 +16,6 @@ abstract class IapNotifier extends StateNotifier<IapState> {
   /// Call first, ASAP
   Future<void> init();
 
-  Future<void> loadData();
-
   Future<void> fetchProducts();
 
   Future<bool> checkPurchase({String storeId = ''});
