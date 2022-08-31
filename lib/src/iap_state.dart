@@ -2,17 +2,29 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'iap_state.freezed.dart';
-part 'iap_state.g.dart';
 
 @freezed
 class IapState with _$IapState {
-  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory IapState({
     @Default(false) bool havePremium,
     @Default(false) bool mustShowNoteSubscription,
+    IapMessage? message,
     @Default([]) List<String> consumableIds,
     @Default([]) List<String> subscriptionIds,
   }) = _IapState;
+}
 
-  factory IapState.fromJson(Map<String, dynamic> json) => _$IapStateFromJson(json);
+@freezed
+class IapMessage with _$IapMessage {
+  const IapMessage._();
+  const factory IapMessage({
+    String? message,
+    @Default(false) bool success,
+    required int time,
+  }) = _IapMessage;
+
+  factory IapMessage.from(dynamic message, [bool success = false]) {
+    return IapMessage(
+        message: message.toString(), success: success, time: DateTime.now().millisecondsSinceEpoch);
+  }
 }
