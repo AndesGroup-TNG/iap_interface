@@ -10,6 +10,8 @@ class IapState with _$IapState {
   const factory IapState({
     @Default(false) bool havePremium,
     @Default(false) bool mustShowNoteSubscription,
+    @Default([]) List<String> consumableIds,
+    @Default([]) List<String> subscriptionIds,
   }) = _IapState;
 
   factory IapState.fromJson(Map<String, dynamic> json) => _$IapStateFromJson(json);

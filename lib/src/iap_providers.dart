@@ -9,8 +9,25 @@ final iapProvider = StateNotifierProvider<IapNotifier, IapState>((ref) {
 abstract class IapNotifier extends StateNotifier<IapState> {
   IapNotifier(
     this.ref, {
-    IapState? state,
-  }) : super(state ?? const IapState());
+    List<String> consumableIds = const [
+      'consum1',
+      'consum2',
+      'consum3',
+      'consum4',
+      'consum5',
+      'consum6',
+    ],
+    List<String> subscriptionIds = const [
+      'sub1',
+      'sub2',
+      'sub3',
+      'sub4',
+      'sub5',
+    ],
+  }) : super(IapState(
+          consumableIds: consumableIds,
+          subscriptionIds: subscriptionIds,
+        ));
   final Ref ref;
 
   /// Call first, ASAP
