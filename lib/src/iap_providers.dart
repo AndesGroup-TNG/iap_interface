@@ -33,6 +33,24 @@ abstract class IapNotifier extends StateNotifier<IapState> {
 
   @mustCallSuper
   Future<void> init() async {
+    reloadDiamonds();
+  }
+
+  Future<void> useDiamonds([int diamonds = 10]) async {
+    final purchase = await checkPurchase();
+
+    if (!purchase) {
+      await IapStorageHelper.useDiamonds(diamonds);
+    }
+    reloadDiamonds();
+  }
+
+  Future<void> buyDiamonds(int diamonds) async {
+    await IapStorageHelper.buyDiamonds(diamonds);
+    reloadDiamonds();
+  }
+
+  Future<void> reloadDiamonds() async {
     final diamonds = await IapStorageHelper.getDiamonds();
     state = state.copyWith(diamonds: diamonds);
   }
