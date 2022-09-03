@@ -45,6 +45,29 @@ abstract class IapNotifier extends StateNotifier<IapState> {
     reloadDiamonds();
   }
 
+  Future<void> buyDiamondsIfNeed(String storeId) async {
+    switch (storeId) {
+      case 'consum1':
+        buyDiamonds(100);
+        break;
+      case 'consum2':
+        buyDiamonds(200);
+        break;
+      case 'consum3':
+        buyDiamonds(300);
+        break;
+      case 'consum4':
+        buyDiamonds(400);
+        break;
+      case 'consum5':
+        buyDiamonds(500);
+        break;
+      case 'consum6':
+        buyDiamonds(600);
+        break;
+    }
+  }
+
   Future<void> buyDiamonds(int diamonds) async {
     await IapStorageHelper.buyDiamonds(diamonds);
     reloadDiamonds();
