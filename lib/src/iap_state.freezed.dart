@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$IapState {
+  int get diamonds => throw _privateConstructorUsedError;
   bool get havePremium => throw _privateConstructorUsedError;
   bool get mustShowNoteSubscription => throw _privateConstructorUsedError;
   IapMessage? get message => throw _privateConstructorUsedError;
@@ -32,7 +33,8 @@ abstract class $IapStateCopyWith<$Res> {
   factory $IapStateCopyWith(IapState value, $Res Function(IapState) then) =
       _$IapStateCopyWithImpl<$Res>;
   $Res call(
-      {bool havePremium,
+      {int diamonds,
+      bool havePremium,
       bool mustShowNoteSubscription,
       IapMessage? message,
       List<String> consumableIds,
@@ -51,6 +53,7 @@ class _$IapStateCopyWithImpl<$Res> implements $IapStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? diamonds = freezed,
     Object? havePremium = freezed,
     Object? mustShowNoteSubscription = freezed,
     Object? message = freezed,
@@ -58,6 +61,10 @@ class _$IapStateCopyWithImpl<$Res> implements $IapStateCopyWith<$Res> {
     Object? subscriptionIds = freezed,
   }) {
     return _then(_value.copyWith(
+      diamonds: diamonds == freezed
+          ? _value.diamonds
+          : diamonds // ignore: cast_nullable_to_non_nullable
+              as int,
       havePremium: havePremium == freezed
           ? _value.havePremium
           : havePremium // ignore: cast_nullable_to_non_nullable
@@ -100,7 +107,8 @@ abstract class _$$_IapStateCopyWith<$Res> implements $IapStateCopyWith<$Res> {
       __$$_IapStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool havePremium,
+      {int diamonds,
+      bool havePremium,
       bool mustShowNoteSubscription,
       IapMessage? message,
       List<String> consumableIds,
@@ -122,6 +130,7 @@ class __$$_IapStateCopyWithImpl<$Res> extends _$IapStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? diamonds = freezed,
     Object? havePremium = freezed,
     Object? mustShowNoteSubscription = freezed,
     Object? message = freezed,
@@ -129,6 +138,10 @@ class __$$_IapStateCopyWithImpl<$Res> extends _$IapStateCopyWithImpl<$Res>
     Object? subscriptionIds = freezed,
   }) {
     return _then(_$_IapState(
+      diamonds: diamonds == freezed
+          ? _value.diamonds
+          : diamonds // ignore: cast_nullable_to_non_nullable
+              as int,
       havePremium: havePremium == freezed
           ? _value.havePremium
           : havePremium // ignore: cast_nullable_to_non_nullable
@@ -157,7 +170,8 @@ class __$$_IapStateCopyWithImpl<$Res> extends _$IapStateCopyWithImpl<$Res>
 
 class _$_IapState with DiagnosticableTreeMixin implements _IapState {
   const _$_IapState(
-      {this.havePremium = false,
+      {this.diamonds = 0,
+      this.havePremium = false,
       this.mustShowNoteSubscription = false,
       this.message,
       final List<String> consumableIds = const [],
@@ -165,6 +179,9 @@ class _$_IapState with DiagnosticableTreeMixin implements _IapState {
       : _consumableIds = consumableIds,
         _subscriptionIds = subscriptionIds;
 
+  @override
+  @JsonKey()
+  final int diamonds;
   @override
   @JsonKey()
   final bool havePremium;
@@ -191,7 +208,7 @@ class _$_IapState with DiagnosticableTreeMixin implements _IapState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'IapState(havePremium: $havePremium, mustShowNoteSubscription: $mustShowNoteSubscription, message: $message, consumableIds: $consumableIds, subscriptionIds: $subscriptionIds)';
+    return 'IapState(diamonds: $diamonds, havePremium: $havePremium, mustShowNoteSubscription: $mustShowNoteSubscription, message: $message, consumableIds: $consumableIds, subscriptionIds: $subscriptionIds)';
   }
 
   @override
@@ -199,6 +216,7 @@ class _$_IapState with DiagnosticableTreeMixin implements _IapState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'IapState'))
+      ..add(DiagnosticsProperty('diamonds', diamonds))
       ..add(DiagnosticsProperty('havePremium', havePremium))
       ..add(DiagnosticsProperty(
           'mustShowNoteSubscription', mustShowNoteSubscription))
@@ -212,6 +230,7 @@ class _$_IapState with DiagnosticableTreeMixin implements _IapState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IapState &&
+            const DeepCollectionEquality().equals(other.diamonds, diamonds) &&
             const DeepCollectionEquality()
                 .equals(other.havePremium, havePremium) &&
             const DeepCollectionEquality().equals(
@@ -226,6 +245,7 @@ class _$_IapState with DiagnosticableTreeMixin implements _IapState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(diamonds),
       const DeepCollectionEquality().hash(havePremium),
       const DeepCollectionEquality().hash(mustShowNoteSubscription),
       const DeepCollectionEquality().hash(message),
@@ -240,12 +260,15 @@ class _$_IapState with DiagnosticableTreeMixin implements _IapState {
 
 abstract class _IapState implements IapState {
   const factory _IapState(
-      {final bool havePremium,
+      {final int diamonds,
+      final bool havePremium,
       final bool mustShowNoteSubscription,
       final IapMessage? message,
       final List<String> consumableIds,
       final List<String> subscriptionIds}) = _$_IapState;
 
+  @override
+  int get diamonds;
   @override
   bool get havePremium;
   @override

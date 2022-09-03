@@ -6,6 +6,7 @@ part 'iap_state.freezed.dart';
 @freezed
 class IapState with _$IapState {
   const factory IapState({
+    @Default(0) int diamonds,
     @Default(false) bool havePremium,
     @Default(false) bool mustShowNoteSubscription,
     IapMessage? message,

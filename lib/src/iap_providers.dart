@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:iap_interface/src/iap_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iap_interface/src/iap_state.dart';
+import 'package:iap_interface/src/iap_storage.dart';
 
 final iapProvider = StateNotifierProvider<IapNotifier, IapState>((ref) {
   throw UnimplementedError();
@@ -30,8 +31,11 @@ abstract class IapNotifier extends StateNotifier<IapState> {
         ));
   final Ref ref;
 
-  /// Call first, ASAP
-  Future<void> init();
+  @mustCallSuper
+  Future<void> init() async {
+    final diamonds = await IapStorageHelper.getDiamonds();
+    state = state.copyWith(diamonds: diamonds);
+  }
 
   Future<void> fetchProducts();
 
