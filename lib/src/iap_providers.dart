@@ -84,5 +84,5 @@ abstract class IapNotifier extends StateNotifier<IapState> {
 
   Future<void> makePurchase(String storeId);
 
-  Widget buyScreen({String title = 'Buy options'});
+  Widget buyScreen({String title = 'Buy options', bool showAppbar = true});
 }
