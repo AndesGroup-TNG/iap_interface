@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iap_interface/src/iap_state.dart';
@@ -17,6 +18,7 @@ abstract class IapNotifier extends StateNotifier<IapState> {
       'consum4',
       'consum5',
       'consum6',
+      if (kDebugMode) 'android.test.purchased',
     ],
     List<String> subscriptionIds = const [
       'sub1',
@@ -24,6 +26,7 @@ abstract class IapNotifier extends StateNotifier<IapState> {
       'sub3',
       'sub4',
       'sub5',
+      if (kDebugMode) 'android.test.purchased',
     ],
   }) : super(IapState(
           consumableIds: consumableIds,
@@ -77,6 +80,8 @@ abstract class IapNotifier extends StateNotifier<IapState> {
     final diamonds = await IapStorageHelper.getDiamonds();
     state = state.copyWith(diamonds: diamonds);
   }
+
+  Future<void> restorePurchase();
 
   Future<void> fetchProducts();
 
